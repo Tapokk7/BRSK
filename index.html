@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BERSERK 1997 — Смотреть онлайн</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+ 
+  <div class="cursor"></div>
+  <div class="cursor-trail"></div>
+  <div class="noise"></div>
+  <div class="blood-bar"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+ 
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-brand">⚔ BERSERK</div>
+    <ul class="nav-links">
+      <li><a href="#hero">Главная</a></li>
+      <li><a href="#watch">Смотреть</a></li>
+      <li><a href="#about">О манге</a></li>
+    </ul>
+  </nav>
+ 
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="rune-circle"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Kentaro Miura • 1989 — 2021</p>
+      <h1 class="hero-title">
+        <span class="title-line">BERSERK</span>
+        <span class="title-sub">ベルセルク</span>
+      </h1>
+      <a href="#watch" class="hero-btn">Смотреть аниме</a>
+    </div>
+  </section>
+ 
+  <!-- WATCH -->
+  <section class="section section-dark" id="watch">
+    <div class="section-inner wide">
+      <div class="section-label">// СМОТРЕТЬ — БЕРСЕРК 1997</div>
+      <h2 class="section-title">Все 25 серий</h2>
+ 
+      <div class="cinema-wrap">
+ 
+        <!-- ПЛЕЕР -->
+        <div class="cinema-player">
+ 
+          <!-- Видео -->
+          <div class="video-shell" id="videoShell">
+            <video id="mainPlayer" preload="metadata"></video>
+ 
+            <!-- Оверлей при отсутствии выбора -->
+            <div class="video-idle" id="videoIdle">
+              <div class="idle-rune">⚔</div>
+              <p class="idle-text">Выберите серию</p>
+              <p class="idle-sub">25 эпизодов • Берсерк 1997</p>
+            </div>
+ 
+            <!-- Кастомные контролы -->
+            <div class="v-controls" id="vControls">
+              <!-- Прогресс -->
+              <div class="v-progress-wrap" id="progressWrap">
+                <div class="v-progress-bg">
+                  <div class="v-progress-buffer" id="bufferBar"></div>
+                  <div class="v-progress-fill" id="progressFill"></div>
+                  <div class="v-progress-thumb" id="progressThumb"></div>
+                </div>
+              </div>
+ 
+              <!-- Нижняя панель -->
+              <div class="v-bottom">
+                <div class="v-left">
+                  <button class="v-btn" id="btnPlay" title="Играть">
+                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  </button>
+                  <button class="v-btn" id="btnPrev" title="Предыдущая">
+                    <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
+                  </button>
+                  <button class="v-btn" id="btnNext" title="Следующая">
+                    <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zm2.5-6 8.5 6V6z"/></svg>
+                  </button>
+ 
+                  <div class="v-volume-wrap">
+                    <button class="v-btn" id="btnMute" title="Звук">
+                      <svg viewBox="0 0 24 24" id="volIcon"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                    </button>
+                    <div class="v-volume-slider-wrap">
+                      <input type="range" class="v-volume-slider" id="volumeSlider" min="0" max="1" step="0.01" value="1" />
+                    </div>
+                  </div>
+ 
+                  <span class="v-time" id="vTime">0:00 / 0:00</span>
+                </div>
+ 
+                <div class="v-right">
+                  <span class="v-ep-label" id="vEpLabel">—</span>
+                  <button class="v-btn" id="btnFullscreen" title="На весь экран">
+                    <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- Полоска сезона под плеером -->
+          <div class="cinema-meta">
+            <div class="meta-badge">Берсерк 1997</div>
+            <div class="meta-studio">Studio OLM • 25 эпизодов</div>
+            <div class="meta-autoplay" id="autoplayToggle">
+              <span class="ap-dot" id="apDot"></span>
+              <span id="apLabel">Автопродолжение вкл</span>
+            </div>
+          </div>
+        </div>
+ 
+        <!-- СПИСОК СЕРИЙ -->
+        <div class="ep-sidebar">
+          <div class="ep-sidebar-head">
+            <span>Серии</span>
+            <span class="ep-count">25 эп.</span>
+          </div>
+          <div class="ep-list" id="epList">
+            <!-- Генерируется из JS -->
+          </div>
+        </div>
+ 
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-inner">
+      <div class="section-label">// О ПРОИЗВЕДЕНИИ</div>
+      <h2 class="section-title">Легенда, рождённая из тьмы</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p><span class="drop-cap">Б</span>ерсерк — тёмное фэнтези Кентаро Миуры, выходившее в журнале Young Animal с 1989 года. История следует за Гатсом — чёрным мечником, чья жизнь пронизана яростью, болью и неугасимой волей к выживанию.</p>
+          <p>Мир Берсерка — средневековый ад, где демоны существуют рядом с людьми, судьба вписана в плоть Знаком Жертвы, а единственным ответом на бессилие остаётся огромный меч и неукротимая ярость.</p>
+          <p>Миура скончался в мае 2021 года, оставив мангу незавершённой. Его ученики продолжают работу по его заметкам.</p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-card"><span class="stat-num">41</span><span class="stat-label">том манги</span></div>
+          <div class="stat-card"><span class="stat-num">1989</span><span class="stat-label">год начала</span></div>
+          <div class="stat-card"><span class="stat-num">50M+</span><span class="stat-label">копий продано</span></div>
+          <div class="stat-card"><span class="stat-num">25</span><span class="stat-label">серий аниме</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p class="footer-text">Посвящается Кентаро Миуре<br><span>1966 – 2021</span></p>
+    <p class="footer-quote">«Даже если мы выберемся отсюда живыми, ты сможешь жить дальше?»</p>
+    <p class="footer-copy">Фан-сайт. Все права принадлежат Kentaro Miura / Hakusensha.</p>
+  </footer>
+ 
+  <script src="js/main.js"></script>
+</body>
+</html>
