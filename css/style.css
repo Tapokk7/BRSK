@@ -633,19 +633,122 @@ button { background: none; border: none; cursor: none; padding: 0; }
   animation: fadeup 0.9s 0.2s both;
 }
  
-/* RESPONSIVE */
-@media (max-width:1100px) {
-  .cinema-wrap { grid-template-columns:1fr; }
-  .ep-sidebar { max-height:320px; border-left:none; border-top:1px solid var(--border); }
-  .ep-list { display:grid; grid-template-columns:repeat(2,1fr); }
-}
-@media (max-width:800px) {
-  .nav { padding:14px 20px; }
-  .nav-links { gap:16px; }
-  .section-inner { padding:0 20px; }
-  .about-grid { grid-template-columns:1fr; }
-  .rune-circle { width:260px; height:260px; }
-  .ep-list { grid-template-columns:1fr; }
-}
-@media (max-width:500px) { .nav-links { display:none; } }
+/* =============================================
+   МОБИЛЬНАЯ ОПТИМИЗАЦИЯ
+   ============================================= */
  
+/* Убираем кастомный курсор на тач-устройствах */
+@media (hover: none) {
+  .cursor, .cursor-trail { display: none; }
+  body { cursor: auto; }
+  button { cursor: pointer; }
+}
+ 
+/* Планшет — 1100px */
+@media (max-width: 1100px) {
+  .cinema-wrap { grid-template-columns: 1fr; }
+  .ep-sidebar {
+    max-height: 340px;
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+  .ep-list { display: grid; grid-template-columns: repeat(2, 1fr); }
+}
+ 
+/* Большой телефон / маленький планшет — 800px */
+@media (max-width: 800px) {
+  .nav { padding: 14px 20px; }
+  .nav-links { gap: 16px; }
+  .nav-links a { font-size: 0.62rem; }
+ 
+  .section { padding: 60px 0; }
+  .section-inner { padding: 0 18px; }
+  .section-inner.wide { padding: 0 12px; }
+ 
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .about-stats { grid-template-columns: repeat(2, 1fr); }
+ 
+  .rune-circle { width: 220px; height: 220px; }
+ 
+  .hero { padding: 100px 20px 60px; }
+  .hero-quote { font-size: 0.92rem; }
+ 
+  .ep-list { grid-template-columns: 1fr; }
+ 
+  /* Плеер — кнопки чуть крупнее для пальца */
+  .v-btn { width: 38px; height: 38px; }
+  .v-btn svg { width: 22px; height: 22px; }
+  .v-time { font-size: 0.58rem; }
+  .v-ep-label { display: none; } /* скрываем название — нет места */
+ 
+  .cinema-meta { flex-wrap: wrap; gap: 10px; padding: 10px 14px; }
+}
+ 
+/* Телефон — 500px */
+@media (max-width: 500px) {
+  /* Навигация — только лого + кнопка смотреть */
+  .nav-links li:nth-child(2) { display: none; } /* скрываем "О манге" */
+  .nav-brand { font-size: 0.85rem; }
+ 
+  .hero { padding: 90px 16px 50px; }
+  .title-line { -webkit-text-stroke: 1px var(--light); }
+  .hero-eyebrow { font-size: 0.6rem; letter-spacing: .2em; }
+  .hero-quote { font-size: 0.88rem; padding-left: 14px; }
+  .hero-btn { padding: 12px 28px; font-size: 0.7rem; }
+ 
+  .section { padding: 50px 0; }
+  .section-inner { padding: 0 14px; }
+  .section-inner.wide { padding: 0 8px; }
+  .section-title { margin-bottom: 32px; }
+ 
+  .about-stats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .stat-card { padding: 18px 12px; }
+  .stat-num { font-size: 1.6rem; }
+ 
+  /* Плеер на телефоне */
+  .cinema-wrap { border: none; box-shadow: none; }
+  .video-shell { border-radius: 0; }
+ 
+  /* Прогресс-бар толще — удобнее тыкать пальцем */
+  .v-progress-wrap { padding: 10px 0; }
+  .v-progress-bg { height: 4px; }
+  .v-progress-wrap:hover .v-progress-bg { height: 4px; }
+  .v-progress-thumb { width: 16px; height: 16px; opacity: 1; } /* всегда виден */
+ 
+  /* Контролы */
+  .v-controls { padding: 20px 12px 10px; }
+  .v-bottom { gap: 6px; }
+  .v-btn { width: 40px; height: 40px; }
+  .v-btn svg { width: 24px; height: 24px; }
+  .v-time { font-size: 0.56rem; }
+  .v-volume-wrap:hover .v-volume-slider-wrap { width: 56px; }
+ 
+  .cinema-meta {
+    padding: 8px 12px;
+    font-size: 0.58rem;
+  }
+  .meta-studio { display: none; }
+ 
+  /* Список серий */
+  .ep-sidebar { max-height: 280px; }
+  .ep-thumb { width: 56px; height: 38px; }
+  .ep-thumb-num { font-size: 0.8rem; }
+  .ep-title { font-size: 0.62rem; }
+  .ep-num-label { font-size: 0.5rem; }
+  .ep-info { padding: 6px 8px; }
+ 
+  /* Футер */
+  .footer { padding: 48px 20px; }
+  .footer-text { font-size: 0.85rem; }
+  .footer-quote { font-size: 0.8rem; }
+ 
+  /* Скрываем параллакс-кольцо на маленьких экранах */
+  .rune-circle { display: none; }
+}
+ 
+/* Очень маленький экран — 380px */
+@media (max-width: 380px) {
+  .nav-links { display: none; }
+  .v-btn { width: 36px; height: 36px; }
+  .title-line { letter-spacing: .04em; }
+}
