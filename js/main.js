@@ -80,6 +80,16 @@ const iconExit  = `<svg viewBox="0 0 24 24"><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2
 // =============================================
 // КУРСОР
 // =============================================
+// =============================================
+// КУРСОР — скрываем на тач-устройствах
+// =============================================
+const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+if (isTouchDevice) {
+  cursor.style.display = 'none';
+  cursorTrail.style.display = 'none';
+  document.body.style.cursor = 'auto';
+}
+ 
 let mx = 0, my = 0, tx = 0, ty = 0;
  
 document.addEventListener('mousemove', e => {
