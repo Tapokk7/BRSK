@@ -276,8 +276,14 @@ btnMute.addEventListener('click', () => {
  
 updateVolSlider(); // начальное состояние
  
-// Полноэкранный режим — только плеер
+// Полноэкранный режим — для iOS используем video напрямую
 btnFullscreen.addEventListener('click', () => {
+  // iOS Safari — webkitEnterFullscreen на video элементе
+  if (video.webkitEnterFullscreen) {
+    video.webkitEnterFullscreen();
+    return;
+  }
+  // Остальные браузеры
   if (!document.fullscreenElement) {
     videoShell.requestFullscreen();
   } else {
@@ -287,6 +293,14 @@ btnFullscreen.addEventListener('click', () => {
  
 document.addEventListener('fullscreenchange', () => {
   btnFullscreen.innerHTML = document.fullscreenElement ? iconExit : iconFs;
+});
+ 
+// iOS не поддерживает fullscreenchange — используем webkitbeginfullscreen
+video.addEventListener('webkitbeginfullscreen', () => {
+  btnFullscreen.innerHTML = iconExit;
+});
+video.addEventListener('webkitendfullscreen', () => {
+  btnFullscreen.innerHTML = iconFs;
 });
  
 // Клавиатура
@@ -312,3 +326,4 @@ apToggle.addEventListener('click', () => {
  
 console.log('%c⚔ BERSERK 1997 ⚔', 'font-size:22px;color:#8b0000;font-weight:bold;');
 console.log('%cПробел=пауза · ←→=±10с · ↑↓=громкость · F=полный экран · M=звук', 'color:#9e9088;');
+ 
