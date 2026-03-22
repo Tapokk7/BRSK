@@ -638,8 +638,8 @@ button { background: none; border: none; cursor: none; padding: 0; }
    ============================================= */
  
 /* Убираем кастомный курсор на тач-устройствах */
-@media (hover: none) {
-  .cursor, .cursor-trail { display: none; }
+@media (hover: none) and (pointer: coarse) {
+  .cursor, .cursor-trail { display: none !important; }
   body { cursor: auto; }
   button { cursor: pointer; }
 }
@@ -655,100 +655,107 @@ button { background: none; border: none; cursor: none; padding: 0; }
   .ep-list { display: grid; grid-template-columns: repeat(2, 1fr); }
 }
  
-/* Большой телефон / маленький планшет — 800px */
+/* 800px */
 @media (max-width: 800px) {
   .nav { padding: 14px 20px; }
   .nav-links { gap: 16px; }
-  .nav-links a { font-size: 0.62rem; }
- 
   .section { padding: 60px 0; }
   .section-inner { padding: 0 18px; }
-  .section-inner.wide { padding: 0 12px; }
- 
+  .section-inner.wide { padding: 0; }
   .about-grid { grid-template-columns: 1fr; gap: 32px; }
-  .about-stats { grid-template-columns: repeat(2, 1fr); }
- 
   .rune-circle { width: 220px; height: 220px; }
- 
-  .hero { padding: 100px 20px 60px; }
-  .hero-quote { font-size: 0.92rem; }
- 
   .ep-list { grid-template-columns: 1fr; }
- 
-  /* Плеер — кнопки чуть крупнее для пальца */
-  .v-btn { width: 38px; height: 38px; }
-  .v-btn svg { width: 22px; height: 22px; }
-  .v-time { font-size: 0.58rem; }
-  .v-ep-label { display: none; } /* скрываем название — нет места */
- 
-  .cinema-meta { flex-wrap: wrap; gap: 10px; padding: 10px 14px; }
 }
  
-/* Телефон — 500px */
-@media (max-width: 500px) {
-  /* Навигация — только лого + кнопка смотреть */
-  .nav-links li:nth-child(2) { display: none; } /* скрываем "О манге" */
-  .nav-brand { font-size: 0.85rem; }
+/* Телефон — 600px */
+@media (max-width: 600px) {
+  /* NAV */
+  .nav { padding: 12px 16px; }
+  .nav-links a { font-size: 0.6rem; letter-spacing: .12em; }
+  .nav-links { gap: 14px; }
  
-  .hero { padding: 90px 16px 50px; }
-  .title-line { -webkit-text-stroke: 1px var(--light); }
-  .hero-eyebrow { font-size: 0.6rem; letter-spacing: .2em; }
-  .hero-quote { font-size: 0.88rem; padding-left: 14px; }
-  .hero-btn { padding: 12px 28px; font-size: 0.7rem; }
+  /* HERO */
+  .hero { padding: 88px 16px 50px; }
+  .hero-eyebrow { font-size: 0.58rem; letter-spacing: .18em; }
+  .hero-quote { font-size: 0.85rem; padding-left: 12px; }
+  .hero-btn { padding: 13px 24px; font-size: 0.68rem; }
+  .rune-circle { display: none; }
  
-  .section { padding: 50px 0; }
-  .section-inner { padding: 0 14px; }
-  .section-inner.wide { padding: 0 8px; }
-  .section-title { margin-bottom: 32px; }
- 
+  /* SECTIONS */
+  .section { padding: 48px 0; }
+  .section-inner { padding: 0 16px; }
+  .section-inner.wide { padding: 0; }
+  .section-title { margin-bottom: 28px; }
   .about-stats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .stat-card { padding: 18px 12px; }
-  .stat-num { font-size: 1.6rem; }
+  .stat-card { padding: 16px 10px; }
+  .stat-num { font-size: 1.5rem; }
  
-  /* Плеер на телефоне */
-  .cinema-wrap { border: none; box-shadow: none; }
-  .video-shell { border-radius: 0; }
+  /* CINEMA WRAP */
+  .cinema-wrap {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
  
-  /* Прогресс-бар толще — удобнее тыкать пальцем */
-  .v-progress-wrap { padding: 10px 0; }
+  /* ПРОГРЕСС БАР — толще для пальца */
+  .v-progress-wrap { padding: 8px 0; }
   .v-progress-bg { height: 4px; }
   .v-progress-wrap:hover .v-progress-bg { height: 4px; }
-  .v-progress-thumb { width: 16px; height: 16px; opacity: 1; } /* всегда виден */
- 
-  /* Контролы */
-  .v-controls { padding: 20px 12px 10px; }
-  .v-bottom { gap: 6px; }
-  .v-btn { width: 40px; height: 40px; }
-  .v-btn svg { width: 24px; height: 24px; }
-  .v-time { font-size: 0.56rem; }
-  .v-volume-wrap:hover .v-volume-slider-wrap { width: 56px; }
- 
-  .cinema-meta {
-    padding: 8px 12px;
-    font-size: 0.58rem;
+  .v-progress-thumb {
+    width: 16px; height: 16px;
+    opacity: 1; /* всегда виден на телефоне */
   }
+ 
+  /* КОНТРОЛЫ ПЛЕЕРА */
+  .v-controls { padding: 16px 10px 8px; gap: 6px; }
+  .v-bottom { gap: 2px; }
+  .v-left { gap: 2px; }
+  .v-right { gap: 2px; }
+ 
+  .v-btn {
+    width: 36px; height: 36px;
+    min-width: 36px;
+  }
+  .v-btn svg { width: 20px; height: 20px; }
+ 
+  /* Скрываем ползунок громкости — на телефоне не нужен */
+  .v-volume-slider-wrap { display: none; }
+  /* Время — компактно */
+  .v-time { font-size: 0.55rem; letter-spacing: 0; }
+  /* Название серии — скрываем */
+  .v-ep-label { display: none; }
+ 
+  /* META STRIP */
+  .cinema-meta { padding: 8px 12px; gap: 8px; flex-wrap: wrap; }
   .meta-studio { display: none; }
+  .meta-badge { font-size: 0.55rem; padding: 2px 8px; }
+  .meta-autoplay { font-size: 0.55rem; }
  
-  /* Список серий */
-  .ep-sidebar { max-height: 280px; }
-  .ep-thumb { width: 56px; height: 38px; }
-  .ep-thumb-num { font-size: 0.8rem; }
-  .ep-title { font-size: 0.62rem; }
-  .ep-num-label { font-size: 0.5rem; }
-  .ep-info { padding: 6px 8px; }
+  /* СПИСОК СЕРИЙ */
+  .ep-sidebar { max-height: 260px; }
+  .ep-sidebar-head { padding: 10px 14px; font-size: 0.58rem; }
  
-  /* Футер */
-  .footer { padding: 48px 20px; }
+  .ep-row { padding: 0; min-height: 48px; }
+  .ep-thumb {
+    width: 52px; height: 48px;
+    flex-shrink: 0;
+  }
+  .ep-thumb-num { font-size: 0.85rem; }
+  .ep-info { padding: 6px 10px; }
+  .ep-num-label { font-size: 0.5rem; margin-bottom: 2px; }
+  .ep-title { font-size: 0.65rem; line-height: 1.2; white-space: normal; }
+ 
+  /* FOOTER */
+  .footer { padding: 40px 16px; }
   .footer-text { font-size: 0.85rem; }
-  .footer-quote { font-size: 0.8rem; }
- 
-  /* Скрываем параллакс-кольцо на маленьких экранах */
-  .rune-circle { display: none; }
+  .footer-quote { font-size: 0.78rem; }
 }
  
-/* Очень маленький экран — 380px */
+/* Маленький телефон — 380px */
 @media (max-width: 380px) {
   .nav-links { display: none; }
-  .v-btn { width: 36px; height: 36px; }
-  .title-line { letter-spacing: .04em; }
+  .v-btn { width: 32px; height: 32px; min-width: 32px; }
+  .v-btn svg { width: 18px; height: 18px; }
+  .v-time { font-size: 0.5rem; }
 }
+ 
