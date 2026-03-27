@@ -1,0 +1,217 @@
+/* =============================================
+   ГЛАВНАЯ — КАТАЛОГ АНИМЕ — home.css
+   ============================================= */
+ 
+:root {
+  --black:   #060406;
+  --blood:   #8b0000;
+  --cyan:    #00c8ff;
+  --gold:    #d4a017;
+  --light:   #ede0d0;
+  --ash:     #9a8e86;
+  --dim:     #3a3040;
+ 
+  --font-display: 'Cinzel Decorative', serif;
+  --font-ui:      'Cinzel', serif;
+  --font-body:    'IM Fell English', serif;
+}
+ 
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  background: var(--black); color: var(--light);
+  font-family: var(--font-body);
+  overflow-x: hidden; cursor: none;
+  min-height: 100vh;
+}
+a { color: inherit; text-decoration: none; }
+ 
+/* NOISE */
+.noise {
+  position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+ 
+/* CURSOR */
+.cursor {
+  width: 10px; height: 10px; background: var(--light);
+  border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000;
+  transform: translate(-50%,-50%); transition: transform 0.1s, background 0.3s;
+}
+.cursor-trail {
+  width: 28px; height: 28px; border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999;
+  transform: translate(-50%,-50%); transition: left 0.11s, top 0.11s;
+}
+ 
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 48px;
+  background: linear-gradient(to bottom, rgba(6,4,6,0.9), transparent);
+}
+.nav-brand {
+  font-family: var(--font-display); font-size: 0.9rem;
+  color: var(--light); letter-spacing: 0.3em; opacity: 0.6;
+}
+ 
+/* CATALOG */
+.catalog {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 100px 40px 60px;
+  gap: 48px;
+}
+ 
+.catalog-header { text-align: center; }
+.catalog-label {
+  font-family: var(--font-ui); font-size: 0.65rem;
+  letter-spacing: .35em; text-transform: uppercase;
+  color: var(--ash); margin-bottom: 12px;
+}
+.catalog-title {
+  font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--light); font-weight: 700;
+}
+ 
+/* CARDS GRID */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  width: 100%; max-width: 1100px;
+}
+ 
+/* CARD */
+.card {
+  position: relative;
+  min-height: 420px;
+  display: flex; align-items: flex-end;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: transform 0.4s, box-shadow 0.4s;
+  cursor: none;
+}
+.card:hover { transform: translateY(-8px); }
+ 
+/* Фон карточки */
+.card-bg {
+  position: absolute; inset: 0;
+  transition: transform 0.6s;
+}
+.card:hover .card-bg { transform: scale(1.04); }
+ 
+.card-bg--berserk {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 30%, rgba(139,0,0,0.35) 0%, transparent 70%),
+    linear-gradient(to bottom, rgba(20,4,4,0.6), rgba(6,4,6,0.98));
+}
+.card-bg--cyberpunk {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 30%, rgba(0,200,255,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 80% 20%, rgba(255,45,120,0.1) 0%, transparent 60%),
+    linear-gradient(to bottom, rgba(3,5,20,0.6), rgba(3,2,10,0.98));
+}
+ 
+/* Неоновое свечение снизу карточки */
+.card-glow {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  transform: scaleX(0); transition: transform 0.4s;
+}
+.card:hover .card-glow { transform: scaleX(1); }
+.card-glow--berserk { background: linear-gradient(to right, transparent, var(--blood), transparent); box-shadow: 0 0 20px rgba(139,0,0,0.8); }
+.card-glow--cyberpunk { background: linear-gradient(to right, transparent, var(--cyan), var(--cyan), transparent); box-shadow: 0 0 20px rgba(0,200,255,0.8); }
+ 
+/* Контент карточки */
+.card-inner {
+  position: relative; z-index: 2;
+  padding: 36px 32px;
+  width: 100%;
+  display: flex; flex-direction: column; gap: 14px;
+}
+ 
+/* Лого */
+.card-logo { min-height: 70px; display: flex; align-items: center; }
+.card-logo-img {
+  max-height: 70px; max-width: 280px;
+  object-fit: contain; filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+.card-logo-img--cp {
+  filter: brightness(0) invert(1);
+}
+.card-logo-fallback {
+  display: none;
+  font-family: var(--font-display); font-size: 2.2rem;
+  color: var(--light); letter-spacing: .05em;
+}
+ 
+/* Мета */
+.card-meta {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-ui); font-size: 0.62rem;
+  letter-spacing: .15em; text-transform: uppercase;
+}
+.card-year { color: var(--gold); }
+.card-dot { color: var(--ash); opacity: 0.4; }
+.card-genre { color: var(--ash); }
+.card-eps { color: var(--ash); }
+ 
+.card--cyberpunk .card-year { color: var(--cyan); }
+ 
+/* Цитата */
+.card-quote {
+  font-style: italic; font-size: 0.92rem; color: var(--ash);
+  line-height: 1.5;
+}
+ 
+/* Кнопка */
+.card-btn {
+  display: inline-block; align-self: flex-start;
+  font-family: var(--font-ui); font-size: 0.7rem;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--light); border: 1px solid rgba(255,255,255,0.2);
+  padding: 10px 24px;
+  transition: border-color 0.3s, color 0.3s, box-shadow 0.3s;
+  margin-top: 4px;
+}
+.card--berserk:hover .card-btn {
+  border-color: var(--blood); color: var(--light);
+  box-shadow: 0 0 16px rgba(139,0,0,0.4);
+}
+.card--cyberpunk:hover .card-btn {
+  border-color: var(--cyan); color: var(--cyan);
+  box-shadow: 0 0 16px rgba(0,200,255,0.4);
+}
+ 
+/* Номер карточки */
+.card-number {
+  position: absolute; top: 24px; right: 28px;
+  font-family: var(--font-display); font-size: 5rem;
+  font-weight: 900; color: rgba(255,255,255,0.04);
+  line-height: 1; pointer-events: none; z-index: 1;
+  transition: color 0.4s;
+}
+.card--berserk:hover .card-number { color: rgba(139,0,0,0.08); }
+.card--cyberpunk:hover .card-number { color: rgba(0,200,255,0.06); }
+ 
+/* RESPONSIVE */
+@media (max-width: 800px) {
+  .cards { grid-template-columns: 1fr; max-width: 500px; }
+  .card { min-height: 340px; }
+  .catalog { padding: 80px 20px 40px; gap: 32px; }
+}
+@media (max-width: 500px) {
+  .card-inner { padding: 24px 20px; }
+  .card-logo-img { max-height: 54px; }
+  .card-logo-fallback { font-size: 1.8rem; }
+  .catalog-title { font-size: clamp(1.6rem, 8vw, 2.5rem); }
+}
+ 
+/* Touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .cursor, .cursor-trail { display: none !important; }
+  body { cursor: auto; }
+  .card { cursor: pointer; }
+}
