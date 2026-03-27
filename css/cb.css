@@ -345,11 +345,15 @@ button { background: none; border: none; cursor: pointer; padding: 0; }
 .v-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .v-left, .v-right { display: flex; align-items: center; gap: 8px; }
 .v-btn {
-  width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
-  color: rgba(255,255,255,0.8); border-radius: 4px; transition: color .2s, background .2s, box-shadow .2s;
+  width: 34px; height: 34px;
+  min-width: 34px; min-height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.8); border-radius: 4px;
+  transition: color .2s, background .2s, box-shadow .2s;
+  font-size: 0; /* убираем случайный текст */
 }
 .v-btn:hover { color: var(--cyan); background: rgba(0,200,255,0.08); box-shadow: var(--glow-cyan); }
-.v-btn svg { width: 20px; height: 20px; fill: currentColor; }
+.v-btn svg { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
  
 .v-volume-wrap { display: flex; align-items: center; gap: 4px; }
 .v-volume-slider-wrap { width: 0; overflow: hidden; transition: width .3s; }
