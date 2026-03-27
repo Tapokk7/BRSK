@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Аниме — Смотреть онлайн</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+ 
+  <div class="cursor"></div>
+  <div class="cursor-trail"></div>
+  <div class="noise"></div>
+ 
+  <nav class="nav">
+    <div class="nav-brand">АНИМЕ</div>
+  </nav>
+ 
+  <main class="catalog">
+ 
+    <div class="catalog-header">
+      <p class="catalog-label">// ВЫБЕРИТЕ АНИМЕ</p>
+      <h1 class="catalog-title">Что смотрим?</h1>
+    </div>
+ 
+    <div class="cards">
+ 
+      <!-- БЕРСЕРК -->
+      <a href="brsk.html" class="card card--berserk">
+        <div class="card-bg card-bg--berserk"></div>
+        <div class="card-glow card-glow--berserk"></div>
+        <div class="card-inner">
+          <div class="card-logo">
+            <img
+              src="https://www.pngmart.com/files/22/Berserk-Logo-PNG-File.png"
+              alt="Berserk"
+              class="card-logo-img"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+            />
+            <span class="card-logo-fallback">BERSERK</span>
+          </div>
+          <div class="card-meta">
+            <span class="card-year">1997</span>
+            <span class="card-dot">·</span>
+            <span class="card-genre">Тёмное фэнтези</span>
+            <span class="card-dot">·</span>
+            <span class="card-eps">25 серий</span>
+          </div>
+          <p class="card-quote">«В этом мире нет ни Бога, ни дьявола.»</p>
+          <div class="card-btn">Смотреть →</div>
+        </div>
+        <div class="card-number">01</div>
+      </a>
+ 
+      <!-- КИБЕРПАНК -->
+      <a href="cb.html" class="card card--cyberpunk">
+        <div class="card-bg card-bg--cyberpunk"></div>
+        <div class="card-glow card-glow--cyberpunk"></div>
+        <div class="card-inner">
+          <div class="card-logo">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Cyberpunk_Edgerunners_logo.png/800px-Cyberpunk_Edgerunners_logo.png"
+              alt="Cyberpunk Edgerunners"
+              class="card-logo-img card-logo-img--cp"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+            />
+            <span class="card-logo-fallback">EDGERUNNERS</span>
+          </div>
+          <div class="card-meta">
+            <span class="card-year">2022</span>
+            <span class="card-dot">·</span>
+            <span class="card-genre">Sci-Fi / Киберпанк</span>
+            <span class="card-dot">·</span>
+            <span class="card-eps">10 серий</span>
+          </div>
+          <p class="card-quote">«Ночной город пожирает людей.»</p>
+          <div class="card-btn">Смотреть →</div>
+        </div>
+        <div class="card-number">02</div>
+      </a>
+ 
+    </div>
+ 
+  </main>
+ 
+  <script src="js/home.js"></script>
+</body>
+</html>
